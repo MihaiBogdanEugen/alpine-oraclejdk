@@ -1,12 +1,14 @@
 # Start from alpine linux 3.5.* with glibc 2.25
 FROM mbe1224/alpine-glibc:3.5-2.25
 
+# Setup JAVA_HOME
+ENV JAVA_HOME="/usr/lib/jvm/default-jvm"
+
 # Install Oracle Java SE Development Kit 8u144 with Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files for JDK/JRE 8
 RUN JAVA_VERSION=8 && \
     JAVA_UPDATE=144 && \
     JAVA_BUILD=01 && \
     JAVA_PATH=090f390dda5b47b9b721c7dfaa008135 && \
-    JAVA_HOME="/usr/lib/jvm/default-jvm" && \
     apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
     cd "/tmp" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
