@@ -1,5 +1,5 @@
-# Start from alpine linux 3.5.* with glibc 2.25
-FROM mbe1224/alpine-glibc:3.5-2.25
+# Start from alpine linux 3.5.* with glibc 2.26
+FROM mbe1224/alpine-glibc:3.5-2.26
 
 # Setup JAVA_HOME
 ENV JAVA_HOME="/usr/lib/jvm/default-jvm"
