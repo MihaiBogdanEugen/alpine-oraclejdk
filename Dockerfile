@@ -1,5 +1,5 @@
-# Start from alpine linux 3.6.* with glibc 2.26
-FROM mbe1224/alpine-glibc:3.6-2.26
+# Start from alpine linux 3.5.* with glibc 2.25
+FROM mbe1224/alpine-glibc:3.5-2.25
 
 # Setup JAVA_HOME
 ENV JAVA_HOME="/usr/lib/jvm/default-jvm"
@@ -9,10 +9,13 @@ RUN JAVA_VERSION=8 && \
     JAVA_UPDATE=144 && \
     JAVA_BUILD=01 && \
     JAVA_PATH=090f390dda5b47b9b721c7dfaa008135 && \
+    JAVA_SHA256_SUM=e8a341ce566f32c3d06f6d0f0eeea9a0f434f538d22af949ae58bc86f2eeaae4 && \
+    JCE_SHA256_SUM=f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59 && \ 
     apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
     cd "/tmp" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
         "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
+    echo "${JAVA_SHA256_SUM}" "jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" | sha256sum -c - && \
     tar -xzf "jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     mkdir -p "/usr/lib/jvm" && \
     mv "/tmp/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}-oracle" && \
@@ -54,6 +57,7 @@ RUN JAVA_VERSION=8 && \
            "$JAVA_HOME/jre/lib/oblique-fonts" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
         "http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION}/jce_policy-${JAVA_VERSION}.zip" && \
+    echo "${JCE_SHA256_SUM}" "jce_policy-${JAVA_VERSION}.zip" | sha256sum -c - && \
     unzip -jo -d "${JAVA_HOME}/jre/lib/security" "jce_policy-${JAVA_VERSION}.zip" && \
     rm "${JAVA_HOME}/jre/lib/security/README.txt" && \
     apk del build-dependencies && \
