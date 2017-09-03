@@ -3,8 +3,11 @@
 ### Supported tags and respective Dockerfile links:
 
 * ```3.5-2.25-8u144``` _\([3.5-2.25-8u144/Dockerfile]\)_
+[![](https://images.microbadger.com/badges/image/mbe1224/alpine-oraclejdk:3.5-2.25-8u144.svg)](https://microbadger.com/images/mbe1224/alpine-oraclejdk:3.5-2.25-8u144 "")
 * ```3.5-2.26-8u144``` _\([3.5-2.26-8u144/Dockerfile]\)_
+[![](https://images.microbadger.com/badges/image/mbe1224/alpine-oraclejdk:3.5-2.26-8u144.svg)](https://microbadger.com/images/mbe1224/alpine-oraclejdk:3.5-2.26-8u144 "")
 * ```3.6-2.26-8u144```, ```latest``` _\([3.6-2.26-8u144/Dockerfile]\)_
+[![](https://images.microbadger.com/badges/image/mbe1224/alpine-oraclejdk:3.6-2.26-8u144.svg)](https://microbadger.com/images/mbe1224/alpine-oraclejdk:3.6-2.26-8u144 "")
 
 #### All tag names follow the naming convention:
 
